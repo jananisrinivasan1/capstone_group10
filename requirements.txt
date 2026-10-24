@@ -1,1 +1,7 @@
 
+langgraph
+pandas
+matplotlib
+opentelemetry-api
+opentelemetry-sdk
+pytest
