@@ -1,0 +1,11 @@
+task,expected,predicted,correct,latency_ms
+I need a refund,refund,refund,True,12.334412000029715
+Where is my invoice?,invoice,invoice,True,11.911643000019012
+"Hello, I need assistance",general,general,True,10.421450999956505
+Please refund my payment,refund,refund,True,6.660673999988376
+Send me the invoice,invoice,invoice,True,5.2853359999858185
+How do I contact support?,general,general,True,4.300579000016569
+My refund is delayed,refund,refund,True,6.327130999977726
+Invoice number is missing,invoice,invoice,True,3.193162000002303
+I have a question,general,general,True,8.952418999967904
+I want to cancel my order,general,general,True,6.331529000021874

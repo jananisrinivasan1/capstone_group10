@@ -1,0 +1,11 @@
+task,expected,baseline,candidate,baseline_correct,candidate_correct
+I need a refund,refund,refund,general,True,False
+Where is my invoice?,invoice,invoice,invoice,True,True
+"Hello, I need assistance",general,general,general,True,True
+Please refund my payment,refund,refund,general,True,False
+Send me the invoice,invoice,invoice,invoice,True,True
+How do I contact support?,general,general,general,True,True
+My refund is delayed,refund,refund,general,True,False
+Invoice number is missing,invoice,invoice,invoice,True,True
+I have a question,general,general,general,True,True
+I want to cancel my order,general,general,general,True,True
