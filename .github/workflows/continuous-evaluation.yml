@@ -1,0 +1,54 @@
+name: Continuous Regression Evaluation
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/**'
+      - 'tests/**'
+      - 'requirements.txt'
+      - '.github/workflows/continuous-evaluation.yml'
+  pull_request:
+    paths:
+      - 'scripts/**'
+      - 'tests/**'
+      - 'requirements.txt'
+      - '.github/workflows/continuous-evaluation.yml'
+  schedule:
+    - cron: '30 2 * * *'
+  workflow_dispatch:
+    inputs:
+      inject_regression:
+        description: 'Demonstrate a failing regression gate'
+        required: false
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  evaluation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python -m pytest -q
+      - name: Evaluate candidate and enforce release gate
+        env:
+          INJECT_REGRESSION: ${{ inputs.inject_regression || false }}
+        run: |
+          if [ "$INJECT_REGRESSION" = "true" ]; then
+            python scripts/evaluate.py --regressed
+          else
+            python scripts/evaluate.py
+          fi
+      - name: Upload evaluation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: continuous-evaluation-results
+          path: artifacts/
+          if-no-files-found: warn
