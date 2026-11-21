@@ -1,0 +1,18 @@
+{
+  "fixture_version": "gst-synthetic-v1.0",
+  "defects": [
+    "none",
+    "wrong_rate",
+    "wrong_jurisdiction",
+    "wrong_base",
+    "wrong_rule_same_amount",
+    "excess_retries"
+  ],
+  "limitations": [
+    "Small synthetic dataset",
+    "Trace assertions are prespecified",
+    "B has no separate live deployment",
+    "No real timing/cost/diagnosis study",
+    "Not independent proof of novelty or superiority"
+  ]
+}
